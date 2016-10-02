@@ -1,0 +1,12 @@
+source ~/Synopsys/cshrc/.synopsys_dc.setup
+
+analyze -format verilog {/net/home/ECE2014_715/ece71504/DVE/finalproject/top.v /net/home/ECE2014_715/ece71504/DVE/finalproject/timer.v /net/home/ECE2014_715/ece71504/DVE/finalproject/lightfsmj.v}
+elaborate top -architecture verilog -library DEFAULT
+compile -exact_map
+check_design
+write_sdf ~/DVE/finalproject/top.sdf
+write -hierarchy -format verilog -output /net/home/ECE2014_715/ece71504/DVE/finalproject/top_netlist.v
+report_area > ~/DVE/finalproject/area.rpt
+report_power > ~/DVE/finalproject/power.rpt
+report_timing > ~/DVE/finalproject/timing.rpt
+report_cell > ~/DVE/finalproject/reportcell.rpt
